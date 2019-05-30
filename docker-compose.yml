@@ -1,0 +1,24 @@
+version: "2"
+services:
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - 3000:3000
+    networks:
+      - monitoring
+    volumes:
+      - /opt/docker-for-monitor/grafana:/var/lib/grafana
+
+  influxdb:
+    image: influxdb
+    container_name: influxdb
+    ports:
+      - 8086:8086
+    networks:
+      - monitoring
+    volumes:
+      - /opt/docker-for-monitor/influxdb:/var/lib/influxdb
+
+networks:
+  monitoring:
